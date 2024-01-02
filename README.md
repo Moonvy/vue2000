@@ -1,4 +1,4 @@
-## Vue2000
+## 🥑 Vue2000
 
 Vue 2 has reached End of Life, However, legacy projects using Vue2 will continue to exist. In many cases, the cost of upgrading projects to Vue3 is not proportional to the benefits.
 

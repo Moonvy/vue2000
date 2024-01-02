@@ -25,8 +25,7 @@ export const isHTMLTag = makeMap(
 export const isSVG = makeMap(
   'svg,animate,circle,clippath,cursor,defs,desc,ellipse,filter,font-face,' +
     'foreignobject,g,glyph,image,line,marker,mask,missing-glyph,path,pattern,' +
-    'polygon,polyline,rect,switch,symbol,text,textpath,tspan,use,view',
-  true
+    'polygon,polyline,rect,switch,symbol,text,textpath,tspan,use,view'
 )
 
 export const isPreTag = (tag?: string): boolean => tag === 'pre'

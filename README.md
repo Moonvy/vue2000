@@ -71,6 +71,33 @@ import { setUnobservable, isUnobservable, clearUnobservable } from "vue"
 - `isUnobservable(value: any): boolean` : Determine whether the object is marked as non-observable.
 - `clearUnobservable<T>(value: T): T` : Remove the non-observable mark from the object.
 
+You can also set `__vueUnobservable` directly on the object
+
+```js
+
+// All keys be Unobservable
+let MyData = {
+  ...HugeData,
+  __vueUnobservable: true
+}
+
+// Specified keys be Unobservable, other keys can be observed
+let MyData = {
+  raw: HugeData,
+  __vueUnobservable: ["raw"]
+}
+
+
+// Specified keys can be observed, other keys cannot be observed
+let MyData = {
+ ...HugeData,
+  name: "XXX"
+  updateTime: 100,
+  __vueUnobservable: Object.assign(['updateTime','name'], {isWhitelist:true})
+}
+
+```
+
 **Related**:
 - [[feature] Ability to disable Vue observation](https://github.com/vuejs/vue/issues/2637)
 - [vue-nonreactive.js](https://github.com/rpkilby/vue-nonreactive/blob/master/vue-nonreactive.js)

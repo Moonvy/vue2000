@@ -7,6 +7,12 @@ import { set, del } from '../observer/index'
 import { ASSET_TYPES } from 'shared/constants'
 import builtInComponents from '../components/index'
 import { observe } from 'core/observer/index'
+// -------- vue2000 --------
+import {
+  isUnobservable,
+  setUnobservable,
+  clearUnobservable
+} from '../util/vue2000.unobservable'
 
 import {
   warn,
@@ -43,6 +49,11 @@ export function initGlobalAPI(Vue: GlobalAPI) {
   Vue.set = set
   Vue.delete = del
   Vue.nextTick = nextTick
+
+  // vue2000: is feature of vue2000
+  Vue.isUnobservable = isUnobservable
+  Vue.setUnobservable = setUnobservable
+  Vue.clearUnobservable = clearUnobservable
 
   // 2.6 explicit observable API
   Vue.observable = <T>(obj: T): T => {

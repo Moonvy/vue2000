@@ -442,5 +442,5 @@ export interface VueConstructor<V extends Vue = Vue> {
   config: VueConfiguration
   version: string
 }
-
+ 
 export const Vue: VueConstructor

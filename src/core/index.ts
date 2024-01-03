@@ -27,9 +27,3 @@ Vue.version = version
 export {}
 export default Vue
 
-// -------- vue2000 --------
-export {
-  isUnobservable,
-  setUnobservable,
-  clearUnobservable
-} from './util/vue2000.unobservable'

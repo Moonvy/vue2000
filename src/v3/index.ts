@@ -94,3 +94,4 @@ export function defineComponent(options: any) {
 export { defineAsyncComponent } from './apiAsyncComponent'
 
 export * from './apiLifecycle'
+export * from '../core/util/vue2000.unobservable'

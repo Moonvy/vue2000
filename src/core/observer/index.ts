@@ -13,7 +13,8 @@ import {
   isValidArrayIndex,
   isServerRendering,
   hasChanged,
-  noop
+  noop,
+  makeMap
 } from '../util/index'
 import { isReadonly, isRef, TrackOpTypes, TriggerOpTypes } from '../../v3'
 
@@ -72,6 +73,21 @@ export class Observer {
       }
     } else {
       /**
+       * vue2000:
+       * Manual control of observation logic
+       */
+      let noObserveKeyMap: undefined | ReturnType<typeof makeMap>
+      let isWhitelist = false
+      if (
+        value &&
+        value.__vueUnobservable &&
+        Array.isArray(value.__vueUnobservable)
+      ) {
+        noObserveKeyMap = makeMap(value.__vueUnobservable)
+        isWhitelist = value.__vueUnobservable.isWhitelist
+      }
+
+      /**
        * Walk through all properties and convert them into
        * getter/setters. This method should only be called when
        * value type is Object.
@@ -79,6 +95,15 @@ export class Observer {
       const keys = Object.keys(value)
       for (let i = 0; i < keys.length; i++) {
         const key = keys[i]
+
+        /** vue2000: */
+        if (noObserveKeyMap) {
+          if (isWhitelist) {
+            if (!noObserveKeyMap(key)) continue
+          } else {
+            if (noObserveKeyMap(key)) continue
+          }
+        }
         defineReactive(value, key, NO_INITIAL_VALUE, undefined, shallow, mock)
       }
     }
@@ -109,6 +134,11 @@ export function observe(
   if (value && hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
     return value.__ob__
   }
+
+  if (value && value.__vueUnobservable === true) {
+    return value
+  }
+
   if (
     shouldObserve &&
     (ssrMockReactivity || !isServerRendering()) &&

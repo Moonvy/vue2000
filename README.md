@@ -1,4 +1,4 @@
-## Vue2000
+## 🥑 Vue2000
 
 Vue 2 has reached End of Life, However, legacy projects using Vue2 will continue to exist. In many cases, the cost of upgrading projects to Vue3 is not proportional to the benefits.
 
@@ -9,9 +9,19 @@ So this is a fork of Vue2, and we will try to continue some necessary maintenanc
 add `overrides` to your `package.json` file, and run `npm install`
 **package.json**
 
+#### npm
 ```diff
 +    "overrides": {
 +        "vue": "npm:vue2000@^2.7.16"
++    }
+```
+
+#### pnpm
+```diff
++ "pnpm": {
++        "overrides": {
++            "vue@^2.7.14": "npm:vue2000@^2"
++        }
 +    }
 ```
 

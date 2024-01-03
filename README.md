@@ -63,7 +63,7 @@ The Vue 2.x reactive system converts all data placed in the component's data to 
 
 In vue2000, a method is provided to mark objects as non-observable. Moreover, you can individually specify whether some keys of the object are observable or unobservable.
 
-```
+```js
 import { setUnobservable, isUnobservable, clearUnobservable } from "vue"
 ```
 

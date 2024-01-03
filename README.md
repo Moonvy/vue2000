@@ -72,4 +72,4 @@ import { setUnobservable, isUnobservable, clearUnobservable } from "vue"
 - `clearUnobservable<T>(value: T): T` : Remove the non-observable mark from the object.
 
 - [[feature] Ability to disable Vue observation](https://github.com/vuejs/vue/issues/2637)
-- [vue-nonreactive.js] (https://github.com/rpkilby/vue-nonreactive/blob/master/vue-nonreactive.js)
+- [vue-nonreactive.js](https://github.com/rpkilby/vue-nonreactive/blob/master/vue-nonreactive.js)

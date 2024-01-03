@@ -79,3 +79,7 @@ export {
 } from './v3-directive'
 
 export * from './built-in-components'
+export * from './vue2000'
+
+
+ 

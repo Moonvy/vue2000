@@ -1,6 +1,6 @@
 {
   "name": "vue2000",
-  "version": "2.7.16",
+  "version": "2.7.19",
   "packageManager": "pnpm@8.9.2",
   "description": "Reactive, component-oriented view layer for modern web interfaces.",
   "main": "dist/vue.runtime.common.js",
@@ -75,7 +75,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue.git"
+    "url": "git+https://github.com/Moonvy/vue2000.git"
   },
   "keywords": [
     "vue"
@@ -83,12 +83,12 @@
   "author": "Evan You",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/vue/issues"
+    "url": "https://github.com/Moonvy/vue2000/issues"
   },
-  "homepage": "https://github.com/vuejs/vue#readme",
+  "homepage": "https://github.com/Moonvy/vue2000#readme",
   "dependencies": {
-    "@vue/compiler-sfc": "workspace:*",
-    "csstype": "^3.1.0"
+    "csstype": "^3.1.0",
+    "@vue/compiler-sfc": "2.7.16"
   },
   "devDependencies": {
     "@babel/parser": "^7.23.5",
@@ -135,5 +135,5 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-}
+  }
 }

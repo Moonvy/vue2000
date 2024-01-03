@@ -14,7 +14,6 @@ import {
   isServerRendering,
   hasChanged,
   noop,
-  makeMap
 } from '../util/index'
 import { isReadonly, isRef, TrackOpTypes, TriggerOpTypes } from '../../v3'
 
@@ -76,14 +75,17 @@ export class Observer {
        * vue2000:
        * Manual control of observation logic
        */
-      let noObserveKeyMap: undefined | ReturnType<typeof makeMap>
+      let noObserveKeyMap: undefined | { (key: string): boolean }
       let isWhitelist = false
       if (
         value &&
         value.__vueUnobservable &&
         Array.isArray(value.__vueUnobservable)
       ) {
-        noObserveKeyMap = makeMap(value.__vueUnobservable)
+        noObserveKeyMap = <any>{}
+        for (const key of value.__vueUnobservable) {
+          noObserveKeyMap![key] = true
+        }
         isWhitelist = value.__vueUnobservable.isWhitelist
       }
 
@@ -99,9 +101,9 @@ export class Observer {
         /** vue2000: */
         if (noObserveKeyMap) {
           if (isWhitelist) {
-            if (!noObserveKeyMap(key)) continue
+            if (!noObserveKeyMap[key]) continue
           } else {
-            if (noObserveKeyMap(key)) continue
+            if (noObserveKeyMap[key]) continue
           }
         }
         defineReactive(value, key, NO_INITIAL_VALUE, undefined, shallow, mock)
@@ -136,7 +138,7 @@ export function observe(
   }
 
   if (value && value.__vueUnobservable === true) {
-    return value
+    return
   }
 
   if (

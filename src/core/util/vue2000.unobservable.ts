@@ -16,7 +16,7 @@ export function setUnobservable<T>(
   let config: any
   if (options && 'whitelist' in options && Array.isArray(options.whitelist)) {
     config = options.whitelist
-    config.whitelist = true
+    config.isWhitelist = true
   } else if (options && 'keys' in options && Array.isArray(options.keys)) {
     config = options.keys
   } else {

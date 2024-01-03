@@ -9,9 +9,19 @@ So this is a fork of Vue2, and we will try to continue some necessary maintenanc
 add `overrides` to your `package.json` file, and run `npm install`
 **package.json**
 
+#### npm
 ```diff
 +    "overrides": {
 +        "vue": "npm:vue2000@^2.7.16"
++    }
+```
+
+#### pnpm
+```diff
++ "pnpm": {
++        "overrides": {
++            "vue@^2.7.14": "npm:vue2000@^2"
++        }
 +    }
 ```
 
